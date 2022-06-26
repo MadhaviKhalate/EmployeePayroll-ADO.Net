@@ -154,5 +154,31 @@ namespace EmployeePayrollService
                 this.connection.Close();
             }
         }
+        public void DeleteData()
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                using (connection)
+                {
+                    Console.WriteLine("Enter a Name");
+                    string name = Console.ReadLine();
+                    SqlCommand command = new SqlCommand("DeleteEmployee_Payroll", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@NAME", name);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
