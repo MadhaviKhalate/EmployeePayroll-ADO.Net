@@ -124,7 +124,7 @@ namespace EmployeePayrollService
             }
             finally
             {
-                this.connection.Close();
+                connection.Close();
             }
         }
         public void UpdateTable()
