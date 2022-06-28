@@ -19,7 +19,12 @@ namespace EmployeePayrollTesting
             DateTime startTime = DateTime.Now;
             getMethod.AddMultipleEmployees(list);
             DateTime endTime = DateTime.Now;
-            Console.WriteLine("Time Taken: " + (endTime - startTime));
+            Console.WriteLine("Time Taken without Threading: " + (endTime - startTime));
+
+            DateTime startTimewithThreading = DateTime.Now;
+            getMethod.AddEmployeesWithThreading(list);
+            DateTime endTimeWithThreading = DateTime.Now;
+            Console.WriteLine("Time Taken with Threading: " + (endTimeWithThreading - startTimewithThreading));
         }
     }
 }

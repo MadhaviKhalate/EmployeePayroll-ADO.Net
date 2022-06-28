@@ -194,11 +194,12 @@ namespace EmployeePayrollService
         {
             model.ForEach(data =>
             {
-                Task thread = new Task(() =>
+                Thread thread = new Thread(() =>
                 {
-                    Console.WriteLine("Employees being Added");
+                    Console.WriteLine("Thread Start Time: " + DateTime.Now);
                     this.AddEmployee(data);
-                    Console.WriteLine("Employees Added " + data.name);
+                    Console.WriteLine("Employee Added: " + data.name);
+                    Console.WriteLine("Thread End Time: " + DateTime.Now);
                 });
                 thread.Start();
             });
