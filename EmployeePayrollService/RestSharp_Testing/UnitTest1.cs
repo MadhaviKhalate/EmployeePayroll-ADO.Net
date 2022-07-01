@@ -27,7 +27,7 @@ namespace RestSharp_Testing
             //Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
             List<Employee> list = JsonConvert.DeserializeObject<List<Employee>>(response.Content);
-            Assert.AreEqual(12, list.Count);
+            Assert.AreEqual(9, list.Count);
             foreach (Employee data in list)
             {
                 Console.WriteLine("{0,-5}{1,-15}{2,-10}", data.id, data.name, data.salary);
@@ -89,6 +89,18 @@ namespace RestSharp_Testing
             Employee data = JsonConvert.DeserializeObject<Employee>(response.Content);
             Assert.AreEqual("Sayali", data.name);
             Assert.AreEqual("25000", data.salary);
+            Console.WriteLine(response.Content);
+        }
+        [TestMethod]
+        public void OnDeletingEmployeeData_ShouldDeleteOnJsonServer()
+        {
+            client = new RestClient("http://localhost:4000");
+            //Arrange
+            RestRequest request = new RestRequest("/employees/12", Method.Delete);
+            //Act
+            RestResponse response = client.Execute(request);
+            //Assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
             Console.WriteLine(response.Content);
         }
     }
