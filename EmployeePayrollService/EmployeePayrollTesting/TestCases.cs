@@ -3,7 +3,7 @@ using EmployeePayrollService;
 namespace EmployeePayrollTesting
 {
     
-    public class Tests
+    public class TestCase
     {
        
         EmployeeRepo getMethod = new EmployeeRepo();

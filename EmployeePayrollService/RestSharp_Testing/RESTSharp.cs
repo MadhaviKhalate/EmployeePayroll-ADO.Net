@@ -27,7 +27,7 @@ namespace RestSharp_Testing
             //Assert
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
             List<Employee> list = JsonConvert.DeserializeObject<List<Employee>>(response.Content);
-            Assert.AreEqual(9, list.Count);
+            Assert.AreEqual(13, list.Count);
             foreach (Employee data in list)
             {
                 Console.WriteLine("{0,-5}{1,-15}{2,-10}", data.id, data.name, data.salary);
@@ -96,7 +96,7 @@ namespace RestSharp_Testing
         {
             client = new RestClient("http://localhost:4000");
             //Arrange
-            RestRequest request = new RestRequest("/employees/12", Method.Delete);
+            RestRequest request = new RestRequest("/employees/13", Method.Delete);
             //Act
             RestResponse response = client.Execute(request);
             //Assert
